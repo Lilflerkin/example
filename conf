@@ -1,0 +1,130 @@
+GitLab Setup Guide – USCB-RFT
+📁 GitLab Access
+Repo Access Request:
+
+Group: fgIbGL_USCB-RFT-DATA-SERVICES_Dev
+
+Request ID: REQ092908078
+
+Search entitlement as: uscb-rft-data-services
+
+AD Group Access for GitLab Login:
+
+AD Group: INTRANET\fgIbGL_GitLabUser
+
+Request ID: REQ093471225-1
+
+📦 Project Repositories
+USCB Impairments: CCR-USCB_RFT_Impairments
+
+Capital Calculations: CCR_USCB_Capital_Calculations
+
+RODAM: CCR-RDAM
+
+🧠 Confluence References
+Generate SSH Key
+
+GitLab Home Page
+
+Pre-requisites
+
+Pipeline Guide
+
+DevHub How-To Guide
+
+Wiki
+
+JIRA
+
+🛡️ SSH Key Setup
+Option 1: Using Git Bash
+Open Git Bash and run:
+
+bash
+Copy
+Edit
+ssh-keygen -t ed25519
+Locate key at:
+
+makefile
+Copy
+Edit
+C:\Users\<UserId>\.ssh\
+Open .pub file and copy entire content.
+
+Visit: GitLab SSH Key Page
+→ Click Add new key
+→ Paste key and click Add key
+
+Option 2: Using Dev CLI
+Ensure Dev CLI is installed (check in Software Center).
+
+If not, raise access request for group: uGLBDevUsers
+
+Open Dev CLI and run:
+
+bash
+Copy
+Edit
+dev activate
+dev tool install git
+ssh-keygen -t ed25519
+Copy the key using:
+
+bash
+Copy
+Edit
+clip < %USERPROFILE%\.ssh\id_ed25519.pub
+Add it to GitLab SSH Key Page
+
+⚙️ Git Configuration
+Run these in Git Bash or Dev CLI:
+
+bash
+Copy
+Edit
+git config --global user.name "Your Name"
+git config --global user.email "your.barclays-email@barclays.com"
+To verify:
+
+bash
+Copy
+Edit
+git config --get-regexp user
+📥 Cloning Repository
+Run:
+
+bash
+Copy
+Edit
+git clone <Repo_Link>
+Example:
+
+bash
+Copy
+Edit
+git clone git@app.gitlab.barcapint.com:barclays/uscb-rft-data-services/CCR_USCB_Capital_Calculations.git
+🌿 Creating Feature Branch
+🔸 Using Git Bash:
+bash
+Copy
+Edit
+cd /path/to/your/repository
+git pull origin master
+git checkout -b feature/<branch-name>
+git push -u origin feature/<branch-name>
+Branch Format: feature/PROJECTCODE-Description
+Example: feature/CUCC-2485-GitLabSetup
+
+🔸 Using GitLab UI:
+Go to project repo
+
+Navigate to Repository → Branches
+
+Click New branch
+
+Name the branch (e.g., feature/<branch-name>)
+
+Select base branch (e.g., main)
+
+Click Create branch
